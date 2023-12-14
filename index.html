@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="tyylit.css">
+
+  <title>Sikanoppapeli</title>
+</head>
+
+<body>
+  mitä?
+  <div class="header">
+    <h2>Sikanoppapeli</h2>
+  </div>
+
+  <div class="row">
+    <div class="column" id="rules">Säännöt
+      <p>Pelin tarkoitus on kerätä sata pistettä tai enemmän (pistemäärän voi sopia
+      ennen peliä) heittämällä noppaa tai noppia ja laskemalla heittojen summa yhteen.
+
+      Pelaaja heittää omalla vuorollaan noppaa niin pitkään, kunnes
+
+      heittää ykkösen
+      päättää lopettaa heittämisen.
+      Jos pelaaja heittää ykkösen, hänen vuoronsa loppuu ja sen kierroksen heittojen summa nollataan. Vuoro siirtyy
+      seuraavalle pelaajalle. Jos pelaaja päättää lopettaa heittämisen ennen kuin hän heittää ykkösen, heittojen summa
+      lasketaan yhteen ja lisätään edellisen kierroksen summaan. Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
+    </p>
+    </div>
+    <div class="column" id="dicepic">Noppa tähän</div>
+    <div class="column" id="options">
+      <form id="btnarea">
+        <label for="add">Anna pelaajan nimi ja paina lisää</label>
+        <input type="text" id="add">
+        <button onclick="addPlayer()">Lisää</button>
+        <button onclick="startGame()">Aloita Peli</button>
+      </form>
+    </div>
+    <div class="column2 side" style="background-color:#bbb;"></div>
+    <div class="column middle" style="background-color:#754444;">Pelaajalista</div>
+    <div class="column2 side" style="background-color:#bbb;"></div>
+
+  </div>
+
+  <div class="footer">
+    <p>#412 JavaScript: Sikanoppapeli</p>
+  </div>
+</body>
+
+</html>
