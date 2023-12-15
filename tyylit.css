@@ -1,31 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 * {
     box-sizing: border-box;
   }
   
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+body {
+    font-family: 'Poppins', sans-serif;  }
   
-  /* Style the header */
-  .header {
+.header {
     background-color: #f1f1f1;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
+    padding: 5px;
+    text-align: center;   
   }
   
+#dicepic {
+  text-align: center;
+}
+
+#vuoro {
+  font-weight: normal;
+  color: white;
+}
+img {
+  border-radius: 8px;
+  width: 100px;
+}
   div p {
-    font-size: 12px;
+    font-size: 11px;
   }
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: left;
-    width: 33.33%;
-    padding: 20px;
-    height: 300px; /* Should be removed. Only for demonstration */
-  }
+  
   .column.middle {
+    padding: 10px;
     float: left;
+    text-align: center;
     width: 50%;
   }
 
@@ -33,26 +39,49 @@
     float: left;
     width: 25%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: auto; 
   }
   
-  /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
     clear: both;
   }
-  
-  /* Style the footer */
-  .footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-    text-align: center;
+  div.nappula > button {
+    padding: 15px 10px;
+    color: black;
+    border: 1px solid #911c1c;
+    background-color: #fcd0d0;
+    width: 200px
+    font-family: 'Poppins';
+    font-size: large ;
+    }
+
+    div.nappula > button:hover {
+      padding: 15px 10px;
+      color: black;
+      border: 1px solid #911c1c;
+      background-color: #f59090;
+      width: 200px
+      font-family: 'Poppins';
+      font-size: large;
+      }
+
+    li {
+      width: 100%;
+      background-color: white;
+      border: dotted 1px #911c1c;
+      font-family: Poppins;
+      list-style: none;
   }
   
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  
+  /* Responsive layout */
   @media (max-width: 600px) {
     .column {
+      width: 100%;
+    }
+    .column2 {
       width: 100%;
     }
   }

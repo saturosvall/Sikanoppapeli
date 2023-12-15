@@ -5,48 +5,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="tyylit.css">
-
-  <title>Sikanoppapeli</title>
+  <title>Sikanoppapeli yhdellä nopalla</title>
 </head>
 
 <body>
-  mitä?
+<!-- OTSIKKOALUE -->
   <div class="header">
-    <h2>Sikanoppapeli</h2>
+    <h1>Sikanoppapeli yhdellä nopalla</h1>
   </div>
 
+<!-- ALUE JOSS SÄÄNNÖT, NOPAN HEITTO JA ASETUKSET -->
+  <div id="control"></div>
   <div class="row">
-    <div class="column" id="rules">Säännöt
-      <p>Pelin tarkoitus on kerätä sata pistettä tai enemmän (pistemäärän voi sopia
-      ennen peliä) heittämällä noppaa tai noppia ja laskemalla heittojen summa yhteen.
+    <!-- SÄÄNÖT-->
+    <div class="column2 side" id="rules">Säännöt
+      <p>Pelaajien tulee kerätä asetettu pistemäärä heittämällä noppaa a laskemalla heittojen summa yhteen.
 
-      Pelaaja heittää omalla vuorollaan noppaa niin pitkään, kunnes
-
-      heittää ykkösen
+      Pelaaja heittää omalla vuorollaan noppaa niin pitkään, kunnes heittää ykkösen tai
       päättää lopettaa heittämisen.
       Jos pelaaja heittää ykkösen, hänen vuoronsa loppuu ja sen kierroksen heittojen summa nollataan. Vuoro siirtyy
       seuraavalle pelaajalle. Jos pelaaja päättää lopettaa heittämisen ennen kuin hän heittää ykkösen, heittojen summa
       lasketaan yhteen ja lisätään edellisen kierroksen summaan. Tämän jälkeen vuoro siirtyy seuraavalle pelaajalle.
     </p>
     </div>
-    <div class="column" id="dicepic">Noppa tähän</div>
-    <div class="column" id="options">
-      <form id="btnarea">
-        <label for="add">Anna pelaajan nimi ja paina lisää</label>
-        <input type="text" id="add">
-        <button onclick="addPlayer()">Lisää</button>
-        <button onclick="startGame()">Aloita Peli</button>
+    <!-- NOPAN HEITTO JA PISTEET -->
+    <div class="column middle" id="dicepic">
+      <div>
+        <h3 id="gameAlert"></h3>
+    </div>
+    <div>
+      <h3 id="controlAlert"></h3>
+  </div>
+      <div><img src="img/d1.gif" id="dice"></div>
+      <div class="scoreboard">
+        <p id="board"></p>
+    </div>
+    </div>
+
+    <!-- PELAAJIEN LISÄÄMINEN JA PISTERAJAN ASETUS -->
+    <div class="column2 side">
+      <form action="" id="addplayer">
+        <label for="add">Lisää pelaaja</label><br>
+        <input type="text" id="add"><br>
+        <button>Lisää</button>
+
+      </form> 
+        <br>
+        <form action="" id="start">
+        <label for="score">Aseta pisteraja</label><br>
+        <input type="number" id="score"><br>
+        <button onclick="startGame()">Aloitetaan peli!</button>
       </form>
     </div>
-    <div class="column2 side" style="background-color:#bbb;"></div>
-    <div class="column middle" style="background-color:#754444;">Pelaajalista</div>
-    <div class="column2 side" style="background-color:#bbb;"></div>
+    </div>
 
+    <!-- PELIALUE, JOSSA AKTIVOIDAAN NOPAN HEITTO TAI VUORON LOPETUS -->
+    <div id="peli">
+    <div class="column2 side" style="background-color:#bbb;"></div>
+    <div class="column middle" style="background-color:#754444;" >   
+          <div  id="vuoro">
+              <h3 style="font-weight: normal">Lisää pelaaja ja pisteraja!</h3>
+          </div>       
+          <div class="nappula">
+              <button onclick="roll()">
+                  <div class="nappi">
+                          Heitä noppaa     
+                  </div>
+              </button>
+              <button onclick="endTurn()">
+                  <div class="nappi">
+                          Lopeta vuorosi
+                  </div>
+              </button>
+            </div>       
+    </div>
+    <div class="column2 side" style="background-color:#bbb;"></div>
   </div>
-
-  <div class="footer">
-    <p>#412 JavaScript: Sikanoppapeli</p>
-  </div>
+</div>
 </body>
-
+<script src="main.js"></script>
 </html>
