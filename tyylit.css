@@ -11,7 +11,24 @@ body {
     padding: 5px;
     text-align: center;   
   }
-  
+
+  /* unvisited link */
+a:link {
+  color: #754444;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #754444;
+}
+
+/* mouse over link */
+a:hover {
+  color:black;
+  background-color: #fcd0d0;
+}
+
+
 #dicepic {
   text-align: center;
 }
@@ -28,14 +45,29 @@ img {
     font-size: 11px;
   }
   
+  .column2.middle {
+    padding: 10px;
+    float: left;
+    text-align: center;
+    width: 50%;
+    height: 400px; 
+  }
+
+  .column2.side {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 400px; 
+  }
   .column.middle {
     padding: 10px;
     float: left;
     text-align: center;
     width: 50%;
+    height: auto; 
   }
 
-  .column2.side {
+  .column.side {
     float: left;
     width: 25%;
     padding: 10px;

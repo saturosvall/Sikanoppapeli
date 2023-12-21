@@ -3,10 +3,12 @@ document.getElementById('start').addEventListener('submit', startGame);
 
 const players = []              // pelaajaluettelo
 const scores = [];              // pisteluettelo
+const dice = [0, 0];
 let targetScore = 0;            
 let streak = 0;
 let turn = 1;
 let gameVictory = false;
+let tuplat = 0;
 
 // pelaajan lisääminen
 function addPlayer(event) {
@@ -42,13 +44,14 @@ function startGame(event) {
             targetScore = document.getElementById("score").value;
             document.getElementById("vuoro").innerHTML = "Peli voi alkaa!" + "<br>" + players[turn - 1] + " aloittaa"
         } else {
-            document.getElementById("controlAlert").innerHTML = "Pelaajia pitää olla vähintään 2!";
+            document.getElementById("controlAlert").innerHTML = "Pelaajia pitää olla vähintään 2";
         }
     }
 }
 
 // vuoron lopetus
 function endTurn(i) {
+
     if (i != 2) {
         scores[turn - 1] = scores[turn - 1] + streak;
         if (scores[turn - 1] >= targetScore && gameVictory == false) {
@@ -62,31 +65,64 @@ function endTurn(i) {
     } else {
         turn = 1;
     }
+    tuplat = 0;
     streak = 0;
     document.getElementById("vuoro").innerHTML =  players[turn - 1] + " heittää noppaa"
 }
 
 // nopan heitto
 function roll() {
-    let d = Math.floor(Math.random()* 6) + 1;
-    if (d === 1) {
-        document.getElementById("dice").src="img/d1.gif"
-        endTurn(2);
-    } else if (d === 2) {
-        document.getElementById("dice").src="img/d2.gif"
-        streak += 2;
-    } else if (d === 3) {
-        document.getElementById("dice").src="img/d3.gif"
-        streak += 3;
-    } else if (d === 4) {
-        document.getElementById("dice").src="img/d4.gif"
-        streak += 4;
-    }else  if (d === 5) {
-        document.getElementById("dice").src="img/d5.gif"
-        streak += 5;
-    } else {
-        document.getElementById("dice").src="img/d6.gif"
-        streak += 6;
+
+    var i = 100;
+    while (i != 102) {
+        var d = Math.floor(Math.random()* 6) + 1;
+        if (d === 1) {
+            document.getElementById(i).src="img/d1.gif"
+            dice[i-100] = 1;
+        } else if (d === 2) {
+            document.getElementById(i).src="img/d2.gif"
+            dice[i-100] = 2;
+        } else if (d === 3) {
+            document.getElementById(i).src="img/d3.gif"
+            dice[i-100] = 3;
+        } else if (d === 4) {
+            document.getElementById(i).src="img/d4.gif"
+            dice[i-100] = 4;
+        }else  if (d === 5) {
+            document.getElementById(i).src="img/d5.gif"
+            dice[i-100] = 5;
+        } else {
+            document.getElementById(i).src="img/d6.gif"
+            dice[i-100] = 6;
+        }
+        i++;
     }
+
+    // kahden nopan pelin ehdot 
+    //(jos yksi ykkönen, jos kaksi ykköstä, jos tuplat ja jos tuplat kolmesti peräkkäin)
+    if (dice[0] == 1 && dice[1] != 1) {
+        document.getElementById("gameAlert").innerHTML = players[turn - 1] + " heitti ykkösen, vuoro vaihtuu seuraavalle";
+        endTurn(2);
+    } else if (dice[1] == 1 && dice[0] != 1) {
+        document.getElementById("gameAlert").innerHTML = players[turn - 1] + " heitti ykkösen, vuoro vaihtuu seuraavalle";
+        endTurn(2);
+    } else if (2 == dice[0] + dice[1]) {
+        streak += 25;
+        tuplat++;
+    } else {
+        document.getElementById("gameAlert").innerHTML = "";
+        streak += dice[0] + dice[1];
+        if (dice[0] == dice[1]) {
+            tuplat++;
+            streak += streak;
+        }
+    }
+    if (tuplat >= 3) {
+        document.getElementById("gameAlert").innerHTML = players[turn - 1] + " heitti tuplat 3 kertaa, vuoro vaihtuu!";
+        endTurn(2);
+    }
+
+    
     document.getElementById(turn).innerHTML = players[turn - 1] + ": " + scores[turn - 1] + " (+" + streak + ")"
+    ones = 0;
 }
